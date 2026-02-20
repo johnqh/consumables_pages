@@ -1,4 +1,8 @@
-import type { CreditPackage, CreditPurchaseRecord, CreditUsageRecord } from "@sudobility/consumables_client";
+import type { CreditPackage } from "@sudobility/consumables_client";
+import type {
+  ConsumablePurchaseRecord,
+  ConsumableUsageRecord,
+} from "@sudobility/types";
 
 // === CreditStorePage ===
 
@@ -52,7 +56,7 @@ export interface PurchaseHistoryPageFormatters {
 }
 
 export interface PurchaseHistoryPageProps {
-  purchases: CreditPurchaseRecord[];
+  purchases: ConsumablePurchaseRecord[];
   isLoading: boolean;
   error: string | null;
   onLoadMore?: () => void;
@@ -77,7 +81,7 @@ export interface UsageHistoryPageFormatters {
 }
 
 export interface UsageHistoryPageProps {
-  usages: CreditUsageRecord[];
+  usages: ConsumableUsageRecord[];
   isLoading: boolean;
   error: string | null;
   onLoadMore?: () => void;
