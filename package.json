@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/consumables_pages",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Web UI components for consumable credits (credit store, purchase history, usage history)",
   "type": "module",
   "main": "./dist/index.js",
@@ -33,7 +33,9 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@sudobility/consumables_client": "file:../consumables_client",
+    "@sudobility/consumables_client": "^0.0.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/bun": "^1.2.8",
     "@types/node": "^25.3.0",
     "@types/react": "^19.2.5",
@@ -45,6 +47,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.0",
     "globals": "^17.3.0",
+    "jsdom": "^28.1.0",
     "prettier": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
