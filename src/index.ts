@@ -15,3 +15,5 @@ export type {
   UsageHistoryPageFormatters,
   CreditBalanceBadgeProps,
 } from "./types";
+
+export type { ConsumableSource } from "@sudobility/types";

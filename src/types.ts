@@ -8,8 +8,10 @@
 import type { CreditPackage } from "@sudobility/consumables_client";
 import type {
   ConsumablePurchaseRecord,
+  ConsumableSource,
   ConsumableUsageRecord,
 } from "@sudobility/types";
+import type { ReactNode } from "react";
 
 // === CreditStorePage ===
 
@@ -23,6 +25,7 @@ export interface CreditStorePageLabels {
   noProducts: string;
   errorTitle: string;
   loginRequired: string;
+  loginButton?: string;
 }
 
 /** Formatting functions for the CreditStorePage component. */
@@ -64,7 +67,7 @@ export interface PurchaseHistoryPageLabels {
 export interface PurchaseHistoryPageFormatters {
   formatDate: (dateStr: string) => string;
   formatAmount: (cents: number, currency: string) => string;
-  formatSource: (source: string) => string;
+  formatSource: (source: ConsumableSource) => string;
 }
 
 /** Props for the PurchaseHistoryPage component. */
@@ -77,6 +80,8 @@ export interface PurchaseHistoryPageProps {
   labels: PurchaseHistoryPageLabels;
   formatters: PurchaseHistoryPageFormatters;
   className?: string;
+  /** Optional custom component to render when the purchase list is empty. */
+  emptyStateComponent?: ReactNode;
 }
 
 // === UsageHistoryPage ===
@@ -105,6 +110,8 @@ export interface UsageHistoryPageProps {
   labels: UsageHistoryPageLabels;
   formatters: UsageHistoryPageFormatters;
   className?: string;
+  /** Optional custom component to render when the usage list is empty. */
+  emptyStateComponent?: ReactNode;
 }
 
 // === CreditBalanceBadge ===

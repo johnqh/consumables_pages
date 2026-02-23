@@ -22,6 +22,7 @@ Web-only UI components for consumable credits system.
 src/
 ├── index.ts                   # Barrel exports (components + types)
 ├── types.ts                   # All prop/label/formatter interfaces
+├── LoadingSpinner.tsx         # Shared internal loading spinner with ARIA attributes
 ├── CreditStorePage.tsx        # Balance display + grid of credit packages with buy buttons
 ├── PurchaseHistoryPage.tsx    # Responsive table/cards of purchase records
 ├── UsageHistoryPage.tsx       # Responsive table/cards of usage records
@@ -117,13 +118,33 @@ Dependency direction: `consumables_pages` depends on `consumables_client` (peer 
 - **No direct CSS**: All styling uses Tailwind utility classes. Do not introduce CSS files, CSS modules, or styled-components.
 - **Conditional wrapper element**: CreditBalanceBadge uses `const Wrapper = onClick ? "button" : "span"` for semantic HTML.
 
+## Tailwind CSS Setup
+
+Consumer apps must include this package's output files in their Tailwind `content` configuration so that Tailwind classes used by these components are included in the final CSS build. Components also support dark mode via `dark:` variant classes -- enable dark mode in the consuming app's Tailwind config to use them.
+
+**Tailwind v3 (`tailwind.config.js`)**:
+```js
+module.exports = {
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@sudobility/consumables_pages/dist/**/*.js",
+  ],
+  // ...
+};
+```
+
+**Tailwind v4 (CSS-based config)**:
+```css
+@import "tailwindcss";
+@source "../node_modules/@sudobility/consumables_pages/dist";
+```
+
 ## Gotchas
 
-- **Consumer app must provide Tailwind CSS**: This package emits Tailwind class names but does NOT bundle Tailwind itself. If the consuming app does not have Tailwind configured, components will render unstyled. This is by design.
+- **Consumer app must provide Tailwind CSS**: This package emits Tailwind class names but does NOT bundle Tailwind itself. If the consuming app does not have Tailwind configured, components will render unstyled. This is by design. See the "Tailwind CSS Setup" section above for required content path configuration.
 - **Components are purely presentational**: No hooks are called inside components. The parent app is responsible for calling `useBalance()`, `usePurchaseCredits()`, etc. from `consumables_client` and passing the results as props. Breaking this pattern creates tight coupling.
 - **No internal state**: Components derive everything from props. If you need loading states or error states, they must be passed in as props, not managed internally with `useState`.
 - **Peer dependency on consumables_client**: The package depends on `consumables_client` for TypeScript types (e.g., `CreditPackage`, `CreditBalance`), but it never imports runtime code from it. The peer dependency ensures type compatibility.
-- **Hardcoded "Log in" button text**: The login button in `CreditStorePage` has hardcoded text `"Log in"` rather than using the labels prop. This is the only non-i18n string in the components.
 - **`tsconfig.json` has `noEmit: true`**: The main tsconfig is for checking only. Building requires `tsconfig.build.json` (via `bun run build`).
 
 ## Testing

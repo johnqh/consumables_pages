@@ -20,7 +20,10 @@ export function CreditBalanceBadge({
   if (isLoading) {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-gray-400 ${className || ""}`}
+        className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-gray-400 dark:text-gray-500 ${className || ""}`}
+        role="status"
+        aria-label="Loading balance"
+        aria-busy="true"
       >
         <span className="animate-pulse">...</span>
       </span>
@@ -34,16 +37,18 @@ export function CreditBalanceBadge({
   return (
     <Wrapper
       onClick={onClick}
+      aria-label={onClick ? `Credit balance: ${balance}` : undefined}
       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
         balance > 0
-          ? "bg-blue-100 text-blue-700"
-          : "bg-red-100 text-red-700"
+          ? "bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300"
+          : "bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300"
       } ${onClick ? "cursor-pointer hover:opacity-80" : ""} ${className || ""}`}
     >
       <svg
         className="w-3.5 h-3.5"
         fill="currentColor"
         viewBox="0 0 20 20"
+        aria-hidden="true"
       >
         <path
           fillRule="evenodd"
