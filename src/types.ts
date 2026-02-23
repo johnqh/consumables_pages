@@ -1,3 +1,10 @@
+/**
+ * @fileoverview Type definitions for all consumables page components.
+ * Defines Labels, Formatters, and Props interfaces for CreditStorePage,
+ * PurchaseHistoryPage, UsageHistoryPage, and CreditBalanceBadge.
+ * All user-facing strings are defined via Labels for i18n support.
+ */
+
 import type { CreditPackage } from "@sudobility/consumables_client";
 import type {
   ConsumablePurchaseRecord,
@@ -6,6 +13,7 @@ import type {
 
 // === CreditStorePage ===
 
+/** Localizable label strings for the CreditStorePage component. */
 export interface CreditStorePageLabels {
   title: string;
   currentBalanceLabel: string;
@@ -17,11 +25,13 @@ export interface CreditStorePageLabels {
   loginRequired: string;
 }
 
+/** Formatting functions for the CreditStorePage component. */
 export interface CreditStorePageFormatters {
   formatCredits: (count: number) => string;
   getPackageDescription?: (packageId: string) => string;
 }
 
+/** Props for the CreditStorePage component. */
 export interface CreditStorePageProps {
   isAuthenticated: boolean;
   balance: number | null;
@@ -38,6 +48,7 @@ export interface CreditStorePageProps {
 
 // === PurchaseHistoryPage ===
 
+/** Localizable label strings for the PurchaseHistoryPage component. */
 export interface PurchaseHistoryPageLabels {
   title: string;
   columnDate: string;
@@ -49,12 +60,14 @@ export interface PurchaseHistoryPageLabels {
   loadMore: string;
 }
 
+/** Formatting functions for the PurchaseHistoryPage component. */
 export interface PurchaseHistoryPageFormatters {
   formatDate: (dateStr: string) => string;
   formatAmount: (cents: number, currency: string) => string;
   formatSource: (source: string) => string;
 }
 
+/** Props for the PurchaseHistoryPage component. */
 export interface PurchaseHistoryPageProps {
   purchases: ConsumablePurchaseRecord[];
   isLoading: boolean;
@@ -68,6 +81,7 @@ export interface PurchaseHistoryPageProps {
 
 // === UsageHistoryPage ===
 
+/** Localizable label strings for the UsageHistoryPage component. */
 export interface UsageHistoryPageLabels {
   title: string;
   columnDate: string;
@@ -76,10 +90,12 @@ export interface UsageHistoryPageLabels {
   loadMore: string;
 }
 
+/** Formatting functions for the UsageHistoryPage component. */
 export interface UsageHistoryPageFormatters {
   formatDate: (dateStr: string) => string;
 }
 
+/** Props for the UsageHistoryPage component. */
 export interface UsageHistoryPageProps {
   usages: ConsumableUsageRecord[];
   isLoading: boolean;
@@ -93,6 +109,7 @@ export interface UsageHistoryPageProps {
 
 // === CreditBalanceBadge ===
 
+/** Props for the CreditBalanceBadge component. */
 export interface CreditBalanceBadgeProps {
   balance: number | null;
   isLoading: boolean;

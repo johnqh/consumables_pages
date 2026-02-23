@@ -1,5 +1,16 @@
+/**
+ * @fileoverview Purchase history page component with responsive table (desktop)
+ * and card (mobile) layouts. Supports load-more pagination.
+ */
+
 import type { PurchaseHistoryPageProps } from "./types";
 
+/**
+ * Renders a paginated list of purchase records.
+ * Desktop: table with date, credits, source, and amount columns.
+ * Mobile: compact card layout.
+ * @param props - See {@link PurchaseHistoryPageProps} for full prop documentation.
+ */
 export function PurchaseHistoryPage({
   purchases,
   isLoading,

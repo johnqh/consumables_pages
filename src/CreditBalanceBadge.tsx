@@ -1,5 +1,16 @@
+/**
+ * @fileoverview Inline credit balance badge component for topbar integration.
+ * Displays a pill-shaped badge with a coin icon and the current balance.
+ * Renders as a button when onClick is provided, otherwise as a span.
+ */
+
 import type { CreditBalanceBadgeProps } from "./types";
 
+/**
+ * Renders a small inline badge showing the user's credit balance.
+ * Blue when balance > 0, red when balance is 0. Returns null when balance is null.
+ * @param props - See {@link CreditBalanceBadgeProps} for full prop documentation.
+ */
 export function CreditBalanceBadge({
   balance,
   isLoading,

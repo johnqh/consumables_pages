@@ -1,5 +1,16 @@
+/**
+ * @fileoverview Credit store page component displaying the user's balance and
+ * a responsive grid of purchasable credit packages. Purely presentational --
+ * all data and callbacks are passed via props.
+ */
+
 import type { CreditStorePageProps } from "./types";
 
+/**
+ * Renders a credit store with balance display, purchase packages grid,
+ * loading/error states, and a login prompt for unauthenticated users.
+ * @param props - See {@link CreditStorePageProps} for full prop documentation.
+ */
 export function CreditStorePage({
   isAuthenticated,
   balance,

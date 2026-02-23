@@ -1,5 +1,16 @@
+/**
+ * @fileoverview Usage history page component with responsive table (desktop)
+ * and card (mobile) layouts. Supports load-more pagination.
+ */
+
 import type { UsageHistoryPageProps } from "./types";
 
+/**
+ * Renders a paginated list of usage records.
+ * Desktop: table with date and filename columns.
+ * Mobile: compact card layout.
+ * @param props - See {@link UsageHistoryPageProps} for full prop documentation.
+ */
 export function UsageHistoryPage({
   usages,
   isLoading,
