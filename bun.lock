@@ -1,10 +1,11 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "@sudobility/consumables_pages",
       "devDependencies": {
-        "@sudobility/consumables_client": "^0.0.9",
+        "@sudobility/consumables_client": "^0.0.10",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
         "@types/bun": "^1.2.8",
@@ -29,8 +30,8 @@
         "vitest": "^4.0.4",
       },
       "peerDependencies": {
-        "@sudobility/consumables_client": "^0.0.9",
-        "@sudobility/types": "^1.9.54",
+        "@sudobility/consumables_client": "^0.0.10",
+        "@sudobility/types": "^1.9.55",
         "react": "^18.0.0 || ^19.0.0",
         "react-dom": "^18.0.0 || ^19.0.0",
       },
@@ -265,7 +266,7 @@
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
-    "@sudobility/consumables_client": ["@sudobility/consumables_client@0.0.9", "", { "peerDependencies": { "@revenuecat/purchases-js": "^1.0.0", "@sudobility/types": "^1.9.54", "react": "^18.0.0 || ^19.0.0", "react-native-purchases": ">=7.0.0" }, "optionalPeers": ["@revenuecat/purchases-js", "react-native-purchases"] }, "sha512-AQBKDCFZWd/9EnzAXlm4AYfM+KLs5O6qd2F9K1Ik8Ty8ei+dy3zePMqsZKcQJT+lZHqN3QO5+bsV2Jx7nO6Lsw=="],
+    "@sudobility/consumables_client": ["@sudobility/consumables_client@0.0.10", "", { "peerDependencies": { "@revenuecat/purchases-js": "^1.0.0", "@sudobility/types": "^1.9.55", "react": "^18.0.0 || ^19.0.0", "react-native-purchases": ">=7.0.0" }, "optionalPeers": ["@revenuecat/purchases-js", "react-native-purchases"] }, "sha512-89uu1RzbnmUNByff4ozz2BTphU1pNxtkzJqHqC8iOyp+hNuIuGlHiejFCj+1KOtBpS0oeNQ5ulxNN2viJq9BPA=="],
 
     "@sudobility/types": ["@sudobility/types@1.9.51", "", {}, "sha512-u4hpUH4Jy3t6OAWExkKolwV93n3apECIBaN7u3iqwngpI5p0SxDlQP5utoCt6wrObcKoUmJJ3Ly4nNKLel+ufA=="],
 
