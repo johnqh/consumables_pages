@@ -147,14 +147,6 @@ module.exports = {
 - **Peer dependency on consumables_client**: The package depends on `consumables_client` for TypeScript types (e.g., `CreditPackage`, `CreditBalance`), but it never imports runtime code from it. The peer dependency ensures type compatibility.
 - **`tsconfig.json` has `noEmit: true`**: The main tsconfig is for checking only. Building requires `tsconfig.build.json` (via `bun run build`).
 
-## Testing
-
-- Run tests: `bun test` (uses vitest)
-- Tests use **React Testing Library** with **jsdom** environment.
-- Test that components render correctly given various prop combinations (empty lists, loading states, different label overrides).
-- Test responsive behavior by verifying correct CSS classes are applied.
-- Do not test hook behavior here -- hooks belong to `consumables_client`.
-
 ## Publishing
 
 - Package: `@sudobility/consumables_pages` (public on npm)
