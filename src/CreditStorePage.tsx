@@ -4,6 +4,7 @@
  * all data and callbacks are passed via props.
  */
 
+import { colors, ui } from "@sudobility/design";
 import { LoadingSpinner } from "./LoadingSpinner";
 import type { CreditStorePageProps } from "./types";
 
@@ -33,11 +34,11 @@ export function CreditStorePage({
 
       {/* Balance display */}
       {isAuthenticated && balance !== null && (
-        <div className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border border-blue-200 dark:border-blue-800">
-          <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+        <div className={`mb-8 p-4 rounded-lg border ${colors.component.alert.info.base} ${colors.component.alert.info.dark}`}>
+          <p className={`text-sm font-medium ${colors.component.alert.info.icon}`}>
             {labels.currentBalanceLabel}
           </p>
-          <p className="text-3xl font-bold text-blue-900 dark:text-blue-100">
+          <p className="text-3xl font-bold">
             {formatters.formatCredits(balance)}
           </p>
         </div>
@@ -46,25 +47,25 @@ export function CreditStorePage({
       {/* Error */}
       {error && (
         <div
-          className="mb-6 p-4 bg-red-50 dark:bg-red-900/30 rounded-lg border border-red-200 dark:border-red-800"
+          className={`mb-6 p-4 rounded-lg border ${colors.component.alert.error.base} ${colors.component.alert.error.dark}`}
           role="alert"
         >
-          <p className="text-sm font-medium text-red-800 dark:text-red-300">
+          <p className="text-sm font-medium">
             {labels.errorTitle}
           </p>
-          <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+          <p className={`text-sm ${colors.component.alert.error.icon}`}>{error}</p>
         </div>
       )}
 
       {/* Login prompt */}
       {!isAuthenticated && (
-        <div className="mb-6 p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg border border-yellow-200 dark:border-yellow-800">
-          <p className="text-sm text-yellow-800 dark:text-yellow-300">
+        <div className={`mb-6 p-4 rounded-lg border ${colors.component.alert.warning.base} ${colors.component.alert.warning.dark}`}>
+          <p className="text-sm">
             {labels.loginRequired}
           </p>
           <button
             onClick={onLoginClick}
-            className="mt-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors"
+            className={`mt-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${colors.component.button.primary.base} ${colors.component.button.primary.dark}`}
           >
             {labels.loginButton ?? "Log in"}
           </button>
@@ -76,7 +77,7 @@ export function CreditStorePage({
 
       {/* No products */}
       {!isLoading && packages.length === 0 && (
-        <p className="text-gray-500 dark:text-gray-400 text-center py-8">
+        <p className={`${ui.text.muted} text-center py-8`}>
           {labels.noProducts}
         </p>
       )}
@@ -87,7 +88,7 @@ export function CreditStorePage({
           {packages.map((pkg) => (
             <div
               key={pkg.packageId}
-              className="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow"
+              className={`p-6 rounded-xl border shadow-sm hover:shadow-md transition-shadow ${colors.component.card.default.base} ${colors.component.card.default.dark}`}
             >
               <div className="text-center">
                 <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">
@@ -98,13 +99,13 @@ export function CreditStorePage({
                     {formatters.getPackageDescription(pkg.packageId)}
                   </p>
                 )}
-                <p className="text-xl font-semibold text-blue-600 dark:text-blue-400 mt-3">
+                <p className={`text-xl font-semibold mt-3 ${colors.component.alert.info.icon}`}>
                   {pkg.priceString}
                 </p>
                 <button
                   onClick={() => onPurchase(pkg.packageId)}
                   disabled={isPurchasing || !isAuthenticated}
-                  className="mt-4 w-full px-4 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 dark:bg-blue-500 dark:hover:bg-blue-600"
+                  className={`mt-4 w-full px-4 py-2.5 font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 ${colors.component.button.primary.base} ${colors.component.button.primary.dark}`}
                 >
                   {isPurchasing
                     ? labels.purchasingButton

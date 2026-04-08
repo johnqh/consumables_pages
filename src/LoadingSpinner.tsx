@@ -4,6 +4,8 @@
  * attributes.
  */
 
+import { colors } from "@sudobility/design";
+
 /**
  * Renders a centered spinning loading indicator with appropriate ARIA attributes.
  * Internal component -- not exported from the package barrel.
@@ -16,7 +18,7 @@ export function LoadingSpinner() {
       aria-label="Loading"
       aria-busy="true"
     >
-      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 dark:border-blue-400" />
+      <div className={`animate-spin rounded-full h-8 w-8 border-b-2 ${colors.component.alert.info.icon.replace(/text-/g, "border-")}`} />
     </div>
   );
 }

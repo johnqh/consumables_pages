@@ -4,6 +4,7 @@
  * Renders as a button when onClick is provided, otherwise as a span.
  */
 
+import { colors, ui } from "@sudobility/design";
 import type { CreditBalanceBadgeProps } from "./types";
 
 /**
@@ -20,7 +21,7 @@ export function CreditBalanceBadge({
   if (isLoading) {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-gray-400 dark:text-gray-500 ${className || ""}`}
+        className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium ${ui.text.muted} ${className || ""}`}
         role="status"
         aria-label="Loading balance"
         aria-busy="true"
@@ -40,8 +41,8 @@ export function CreditBalanceBadge({
       aria-label={onClick ? `Credit balance: ${balance}` : undefined}
       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
         balance > 0
-          ? "bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300"
-          : "bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300"
+          ? `${colors.component.badge.primary.base} ${colors.component.badge.primary.dark}`
+          : `${colors.component.badge.error.base} ${colors.component.badge.error.dark}`
       } ${onClick ? "cursor-pointer hover:opacity-80" : ""} ${className || ""}`}
     >
       <svg

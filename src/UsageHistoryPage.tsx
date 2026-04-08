@@ -3,6 +3,7 @@
  * and card (mobile) layouts. Supports load-more pagination.
  */
 
+import { colors, ui } from "@sudobility/design";
 import { LoadingSpinner } from "./LoadingSpinner";
 import type { UsageHistoryPageProps } from "./types";
 
@@ -31,10 +32,10 @@ export function UsageHistoryPage({
 
       {error && (
         <div
-          className="mb-4 p-3 bg-red-50 dark:bg-red-900/30 rounded-lg border border-red-200 dark:border-red-800"
+          className={`mb-4 p-3 rounded-lg border ${colors.component.alert.error.base} ${colors.component.alert.error.dark}`}
           role="alert"
         >
-          <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+          <p className={`text-sm ${colors.component.alert.error.icon}`}>{error}</p>
         </div>
       )}
 
@@ -43,7 +44,7 @@ export function UsageHistoryPage({
       {!isLoading && usages.length === 0 && (
         <>
           {emptyStateComponent ?? (
-            <p className="text-gray-500 dark:text-gray-400 text-center py-8">
+            <p className={`${ui.text.muted} text-center py-8`}>
               {labels.noRecords}
             </p>
           )}
@@ -56,11 +57,11 @@ export function UsageHistoryPage({
           <div className="hidden sm:block overflow-x-auto">
             <table className="w-full text-sm" aria-label={labels.title}>
               <thead>
-                <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <th className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400">
+                <tr className={`border-b ${ui.border.default}`}>
+                  <th className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}>
                     {labels.columnDate}
                   </th>
-                  <th className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400">
+                  <th className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}>
                     {labels.columnFilename}
                   </th>
                 </tr>
@@ -69,7 +70,7 @@ export function UsageHistoryPage({
                 {usages.map((usage) => (
                   <tr
                     key={usage.id}
-                    className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                    className={`border-b ${ui.border.subtle} hover:bg-gray-50 dark:hover:bg-gray-800/50`}
                   >
                     <td className="py-3 px-4 text-gray-700 dark:text-gray-300">
                       {formatters.formatDate(usage.created_at)}
@@ -88,7 +89,7 @@ export function UsageHistoryPage({
             {usages.map((usage) => (
               <div
                 key={usage.id}
-                className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+                className={`p-4 rounded-lg border ${colors.component.card.default.base} ${colors.component.card.default.dark}`}
               >
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   {formatters.formatDate(usage.created_at)}
@@ -104,7 +105,7 @@ export function UsageHistoryPage({
             <div className="mt-4 text-center">
               <button
                 onClick={onLoadMore}
-                className="px-4 py-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
+                className={`px-4 py-2 text-sm font-medium ${ui.text.link}`}
               >
                 {labels.loadMore}
               </button>
