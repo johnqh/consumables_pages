@@ -1,6 +1,6 @@
 {
   "name": "@sudobility/consumables_pages",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Web UI components for consumable credits (credit store, purchase history, usage history)",
   "type": "module",
   "main": "./dist/index.js",
@@ -69,6 +69,6 @@
     "url": "https://github.com/johnqh/consumables_pages.git"
   },
   "dependencies": {
-    "@sudobility/design": "^1.1.26"
+    "@sudobility/design": "^1.1.27"
   }
 }
