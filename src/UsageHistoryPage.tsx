@@ -3,9 +3,9 @@
  * and card (mobile) layouts. Supports load-more pagination.
  */
 
-import { colors, ui } from "@sudobility/design";
-import { LoadingSpinner } from "./LoadingSpinner";
-import type { UsageHistoryPageProps } from "./types";
+import { colors, ui } from '@sudobility/design';
+import { LoadingSpinner } from './LoadingSpinner';
+import type { UsageHistoryPageProps } from './types';
 
 /**
  * Renders a paginated list of usage records.
@@ -26,16 +26,18 @@ export function UsageHistoryPage({
 }: UsageHistoryPageProps) {
   return (
     <div className={className}>
-      <h1 className="text-2xl font-bold mb-6 dark:text-white">
+      <h1 className='text-2xl font-bold mb-6 dark:text-white'>
         {labels.title}
       </h1>
 
       {error && (
         <div
           className={`mb-4 p-3 rounded-lg border ${colors.component.alert.error.base} ${colors.component.alert.error.dark}`}
-          role="alert"
+          role='alert'
         >
-          <p className={`text-sm ${colors.component.alert.error.icon}`}>{error}</p>
+          <p className={`text-sm ${colors.component.alert.error.icon}`}>
+            {error}
+          </p>
         </div>
       )}
 
@@ -54,29 +56,33 @@ export function UsageHistoryPage({
       {!isLoading && usages.length > 0 && (
         <>
           {/* Desktop table */}
-          <div className="hidden sm:block overflow-x-auto">
-            <table className="w-full text-sm" aria-label={labels.title}>
+          <div className='hidden sm:block overflow-x-auto'>
+            <table className='w-full text-sm' aria-label={labels.title}>
               <thead>
                 <tr className={`border-b ${ui.border.default}`}>
-                  <th className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}>
+                  <th
+                    className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}
+                  >
                     {labels.columnDate}
                   </th>
-                  <th className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}>
+                  <th
+                    className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}
+                  >
                     {labels.columnFilename}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {usages.map((usage) => (
+                {usages.map(usage => (
                   <tr
                     key={usage.id}
                     className={`border-b ${ui.border.subtle} hover:bg-gray-50 dark:hover:bg-gray-800/50`}
                   >
-                    <td className="py-3 px-4 text-gray-700 dark:text-gray-300">
+                    <td className='py-3 px-4 text-gray-700 dark:text-gray-300'>
                       {formatters.formatDate(usage.created_at)}
                     </td>
-                    <td className="py-3 px-4 text-gray-600 dark:text-gray-400">
-                      {usage.filename || "-"}
+                    <td className='py-3 px-4 text-gray-600 dark:text-gray-400'>
+                      {usage.filename || '-'}
                     </td>
                   </tr>
                 ))}
@@ -85,24 +91,24 @@ export function UsageHistoryPage({
           </div>
 
           {/* Mobile cards */}
-          <div className="sm:hidden space-y-3">
-            {usages.map((usage) => (
+          <div className='sm:hidden space-y-3'>
+            {usages.map(usage => (
               <div
                 key={usage.id}
                 className={`p-4 rounded-lg border ${colors.component.card.default.base} ${colors.component.card.default.dark}`}
               >
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className='text-sm text-gray-500 dark:text-gray-400'>
                   {formatters.formatDate(usage.created_at)}
                 </p>
-                <p className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                  {usage.filename || "-"}
+                <p className='text-sm text-gray-700 dark:text-gray-300 font-medium'>
+                  {usage.filename || '-'}
                 </p>
               </div>
             ))}
           </div>
 
           {hasMore && onLoadMore && (
-            <div className="mt-4 text-center">
+            <div className='mt-4 text-center'>
               <button
                 onClick={onLoadMore}
                 className={`px-4 py-2 text-sm font-medium ${ui.text.link}`}

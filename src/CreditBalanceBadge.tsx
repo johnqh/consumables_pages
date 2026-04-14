@@ -4,8 +4,8 @@
  * Renders as a button when onClick is provided, otherwise as a span.
  */
 
-import { colors, ui } from "@sudobility/design";
-import type { CreditBalanceBadgeProps } from "./types";
+import { colors, ui } from '@sudobility/design';
+import type { CreditBalanceBadgeProps } from './types';
 
 /**
  * Renders a small inline badge showing the user's credit balance.
@@ -21,19 +21,19 @@ export function CreditBalanceBadge({
   if (isLoading) {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium ${ui.text.muted} ${className || ""}`}
-        role="status"
-        aria-label="Loading balance"
-        aria-busy="true"
+        className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium ${ui.text.muted} ${className || ''}`}
+        role='status'
+        aria-label='Loading balance'
+        aria-busy='true'
       >
-        <span className="animate-pulse">...</span>
+        <span className='animate-pulse'>...</span>
       </span>
     );
   }
 
   if (balance === null) return null;
 
-  const Wrapper = onClick ? "button" : "span";
+  const Wrapper = onClick ? 'button' : 'span';
 
   return (
     <Wrapper
@@ -43,18 +43,18 @@ export function CreditBalanceBadge({
         balance > 0
           ? `${colors.component.badge.primary.base} ${colors.component.badge.primary.dark}`
           : `${colors.component.badge.error.base} ${colors.component.badge.error.dark}`
-      } ${onClick ? "cursor-pointer hover:opacity-80" : ""} ${className || ""}`}
+      } ${onClick ? 'cursor-pointer hover:opacity-80' : ''} ${className || ''}`}
     >
       <svg
-        className="w-3.5 h-3.5"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        aria-hidden="true"
+        className='w-3.5 h-3.5'
+        fill='currentColor'
+        viewBox='0 0 20 20'
+        aria-hidden='true'
       >
         <path
-          fillRule="evenodd"
-          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
-          clipRule="evenodd"
+          fillRule='evenodd'
+          d='M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z'
+          clipRule='evenodd'
         />
       </svg>
       {balance}

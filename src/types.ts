@@ -5,13 +5,13 @@
  * All user-facing strings are defined via Labels for i18n support.
  */
 
-import type { CreditPackage } from "@sudobility/consumables_client";
+import type { CreditPackage } from '@sudobility/consumables_client';
 import type {
   ConsumablePurchaseRecord,
   ConsumableSource,
   ConsumableUsageRecord,
-} from "@sudobility/types";
-import type { ReactNode } from "react";
+} from '@sudobility/types';
+import type { ReactNode } from 'react';
 
 // === CreditStorePage ===
 

@@ -4,7 +4,7 @@
  * attributes.
  */
 
-import { colors } from "@sudobility/design";
+import { colors } from '@sudobility/design';
 
 /**
  * Renders a centered spinning loading indicator with appropriate ARIA attributes.
@@ -13,12 +13,14 @@ import { colors } from "@sudobility/design";
 export function LoadingSpinner() {
   return (
     <div
-      className="flex justify-center py-12"
-      role="status"
-      aria-label="Loading"
-      aria-busy="true"
+      className='flex justify-center py-12'
+      role='status'
+      aria-label='Loading'
+      aria-busy='true'
     >
-      <div className={`animate-spin rounded-full h-8 w-8 border-b-2 ${colors.component.alert.info.icon.replace(/text-/g, "border-")}`} />
+      <div
+        className={`animate-spin rounded-full h-8 w-8 border-b-2 ${colors.component.alert.info.icon.replace(/text-/g, 'border-')}`}
+      />
     </div>
   );
 }

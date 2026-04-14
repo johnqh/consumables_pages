@@ -3,10 +3,10 @@
  * and card (mobile) layouts. Supports load-more pagination.
  */
 
-import { colors, ui } from "@sudobility/design";
-import type { ConsumableSource } from "@sudobility/types";
-import { LoadingSpinner } from "./LoadingSpinner";
-import type { PurchaseHistoryPageProps } from "./types";
+import { colors, ui } from '@sudobility/design';
+import type { ConsumableSource } from '@sudobility/types';
+import { LoadingSpinner } from './LoadingSpinner';
+import type { PurchaseHistoryPageProps } from './types';
 
 /**
  * Renders a paginated list of purchase records.
@@ -27,16 +27,18 @@ export function PurchaseHistoryPage({
 }: PurchaseHistoryPageProps) {
   return (
     <div className={className}>
-      <h1 className="text-2xl font-bold mb-6 dark:text-white">
+      <h1 className='text-2xl font-bold mb-6 dark:text-white'>
         {labels.title}
       </h1>
 
       {error && (
         <div
           className={`mb-4 p-3 rounded-lg border ${colors.component.alert.error.base} ${colors.component.alert.error.dark}`}
-          role="alert"
+          role='alert'
         >
-          <p className={`text-sm ${colors.component.alert.error.icon}`}>{error}</p>
+          <p className={`text-sm ${colors.component.alert.error.icon}`}>
+            {error}
+          </p>
         </div>
       )}
 
@@ -55,46 +57,56 @@ export function PurchaseHistoryPage({
       {!isLoading && purchases.length > 0 && (
         <>
           {/* Desktop table */}
-          <div className="hidden sm:block overflow-x-auto">
-            <table className="w-full text-sm" aria-label={labels.title}>
+          <div className='hidden sm:block overflow-x-auto'>
+            <table className='w-full text-sm' aria-label={labels.title}>
               <thead>
                 <tr className={`border-b ${ui.border.default}`}>
-                  <th className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}>
+                  <th
+                    className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}
+                  >
                     {labels.columnDate}
                   </th>
-                  <th className={`text-right py-3 px-4 font-medium ${ui.text.muted}`}>
+                  <th
+                    className={`text-right py-3 px-4 font-medium ${ui.text.muted}`}
+                  >
                     {labels.columnCredits}
                   </th>
-                  <th className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}>
+                  <th
+                    className={`text-left py-3 px-4 font-medium ${ui.text.muted}`}
+                  >
                     {labels.columnSource}
                   </th>
-                  <th className={`text-right py-3 px-4 font-medium ${ui.text.muted}`}>
+                  <th
+                    className={`text-right py-3 px-4 font-medium ${ui.text.muted}`}
+                  >
                     {labels.columnAmount}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {purchases.map((purchase) => (
+                {purchases.map(purchase => (
                   <tr
                     key={purchase.id}
                     className={`border-b ${ui.border.subtle} hover:bg-gray-50 dark:hover:bg-gray-800/50`}
                   >
-                    <td className="py-3 px-4 text-gray-700 dark:text-gray-300">
+                    <td className='py-3 px-4 text-gray-700 dark:text-gray-300'>
                       {formatters.formatDate(purchase.created_at)}
                     </td>
-                    <td className="py-3 px-4 text-right font-medium text-green-600 dark:text-green-400">
+                    <td className='py-3 px-4 text-right font-medium text-green-600 dark:text-green-400'>
                       +{purchase.credits}
                     </td>
-                    <td className="py-3 px-4 text-gray-600 dark:text-gray-400">
-                      {formatters.formatSource(purchase.source as ConsumableSource)}
+                    <td className='py-3 px-4 text-gray-600 dark:text-gray-400'>
+                      {formatters.formatSource(
+                        purchase.source as ConsumableSource
+                      )}
                     </td>
-                    <td className="py-3 px-4 text-right text-gray-600 dark:text-gray-400">
+                    <td className='py-3 px-4 text-right text-gray-600 dark:text-gray-400'>
                       {purchase.price_cents != null && purchase.currency
                         ? formatters.formatAmount(
                             purchase.price_cents,
-                            purchase.currency,
+                            purchase.currency
                           )
-                        : "-"}
+                        : '-'}
                     </td>
                   </tr>
                 ))}
@@ -103,30 +115,32 @@ export function PurchaseHistoryPage({
           </div>
 
           {/* Mobile cards */}
-          <div className="sm:hidden space-y-3">
-            {purchases.map((purchase) => (
+          <div className='sm:hidden space-y-3'>
+            {purchases.map(purchase => (
               <div
                 key={purchase.id}
                 className={`p-4 rounded-lg border ${colors.component.card.default.base} ${colors.component.card.default.dark}`}
               >
-                <div className="flex justify-between items-start">
+                <div className='flex justify-between items-start'>
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className='text-sm text-gray-500 dark:text-gray-400'>
                       {formatters.formatDate(purchase.created_at)}
                     </p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {formatters.formatSource(purchase.source as ConsumableSource)}
+                    <p className='text-sm text-gray-600 dark:text-gray-400'>
+                      {formatters.formatSource(
+                        purchase.source as ConsumableSource
+                      )}
                     </p>
                   </div>
-                  <div className="text-right">
-                    <p className="font-medium text-green-600 dark:text-green-400">
+                  <div className='text-right'>
+                    <p className='font-medium text-green-600 dark:text-green-400'>
                       +{purchase.credits}
                     </p>
                     {purchase.price_cents != null && purchase.currency && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className='text-sm text-gray-500 dark:text-gray-400'>
                         {formatters.formatAmount(
                           purchase.price_cents,
-                          purchase.currency,
+                          purchase.currency
                         )}
                       </p>
                     )}
@@ -137,7 +151,7 @@ export function PurchaseHistoryPage({
           </div>
 
           {hasMore && onLoadMore && (
-            <div className="mt-4 text-center">
+            <div className='mt-4 text-center'>
               <button
                 onClick={onLoadMore}
                 className={`px-4 py-2 text-sm font-medium ${ui.text.link}`}
