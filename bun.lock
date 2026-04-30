@@ -5,10 +5,10 @@
     "": {
       "name": "@sudobility/consumables_pages",
       "dependencies": {
-        "@sudobility/design": "^1.1.29",
+        "@sudobility/design": "^1.1.30",
       },
       "devDependencies": {
-        "@sudobility/consumables_client": "^0.0.15",
+        "@sudobility/consumables_client": "^0.0.16",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
         "@types/bun": "^1.2.8",
@@ -33,7 +33,7 @@
         "vitest": "^4.0.4",
       },
       "peerDependencies": {
-        "@sudobility/consumables_client": "^0.0.15",
+        "@sudobility/consumables_client": "^0.0.16",
         "@sudobility/types": "^1.9.61",
         "react": "^18.0.0 || ^19.0.0",
         "react-dom": "^18.0.0 || ^19.0.0",
@@ -269,9 +269,9 @@
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
-    "@sudobility/consumables_client": ["@sudobility/consumables_client@0.0.15", "", { "peerDependencies": { "@revenuecat/purchases-js": "^1.0.0", "@sudobility/types": "^1.9.61", "react": "^18.0.0 || ^19.0.0", "react-native-purchases": ">=7.0.0" }, "optionalPeers": ["@revenuecat/purchases-js", "react-native-purchases"] }, "sha512-otXidx5eSf+pHH+y+OYiZhg+kLN2xAPdc2RpfYLlEqg2gikjCnhtj8Zv3HdHcMil2nmDpC+xl0nhZy0QQabpgw=="],
+    "@sudobility/consumables_client": ["@sudobility/consumables_client@0.0.16", "", { "peerDependencies": { "@revenuecat/purchases-js": "^1.0.0", "@sudobility/types": "^1.9.61", "react": "^18.0.0 || ^19.0.0", "react-native-purchases": ">=7.0.0" }, "optionalPeers": ["@revenuecat/purchases-js", "react-native-purchases"] }, "sha512-8iWJDuYtRuB+642vLkbVx1UBJR1mcXBQzDDfVuOuayqqR/5niz9xL/zNOeVoOisILBDSJj6goiNG4yYi4mxYIQ=="],
 
-    "@sudobility/design": ["@sudobility/design@1.1.29", "", { "peerDependencies": { "clsx": ">=2.0.0", "tailwind-merge": ">=2.0.0" } }, "sha512-M7crdNWhdjetVE++eU/ZGYpPrS3wG7/kEQBbxj5gHBtWQK2htyZuSIP+TvSGOh2pylXImciFxmB23rI0/NssoQ=="],
+    "@sudobility/design": ["@sudobility/design@1.1.30", "", { "peerDependencies": { "clsx": ">=2.0.0", "tailwind-merge": ">=2.0.0" } }, "sha512-yENSXWuMa9fxGGtvZUQFc94a2Iz/6R8qH4k4FU3qdX3eJYgATFWH13I3xNzM/cyt8Pm8THwiSNCnKjV0092NVg=="],
 
     "@sudobility/types": ["@sudobility/types@1.9.51", "", {}, "sha512-u4hpUH4Jy3t6OAWExkKolwV93n3apECIBaN7u3iqwngpI5p0SxDlQP5utoCt6wrObcKoUmJJ3Ly4nNKLel+ufA=="],
 
