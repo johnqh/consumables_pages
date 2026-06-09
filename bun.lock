@@ -5,7 +5,7 @@
     "": {
       "name": "@sudobility/consumables_pages",
       "dependencies": {
-        "@sudobility/design": "^1.1.30",
+        "@sudobility/design": "^1.1.31",
       },
       "devDependencies": {
         "@sudobility/consumables_client": "^0.0.17",
@@ -271,7 +271,7 @@
 
     "@sudobility/consumables_client": ["@sudobility/consumables_client@0.0.17", "", { "peerDependencies": { "@revenuecat/purchases-js": "^1.0.0", "@sudobility/types": "^1.9.62", "react": "^18.0.0 || ^19.0.0", "react-native-purchases": ">=7.0.0" }, "optionalPeers": ["@revenuecat/purchases-js", "react-native-purchases"] }, "sha512-TfR1SrevygXdGM+iLZdr/lk7TXdg/vMA77UeYCBHNOlaokKMTnuDTraX9YQhxGPZMXpcquKDavlCMHwE3ogskA=="],
 
-    "@sudobility/design": ["@sudobility/design@1.1.30", "", { "peerDependencies": { "clsx": ">=2.0.0", "tailwind-merge": ">=2.0.0" } }, "sha512-yENSXWuMa9fxGGtvZUQFc94a2Iz/6R8qH4k4FU3qdX3eJYgATFWH13I3xNzM/cyt8Pm8THwiSNCnKjV0092NVg=="],
+    "@sudobility/design": ["@sudobility/design@1.1.31", "", { "peerDependencies": { "clsx": ">=2.0.0", "tailwind-merge": ">=2.0.0" } }, "sha512-eB7nNF8MYmcQXcD5jhKX2PFaUkw5hrG4mdPrtvqBuIXsyTgbWeQksR3UPDZKuxkTj/g881rWveNz3woS3OhYyA=="],
 
     "@sudobility/types": ["@sudobility/types@1.9.51", "", {}, "sha512-u4hpUH4Jy3t6OAWExkKolwV93n3apECIBaN7u3iqwngpI5p0SxDlQP5utoCt6wrObcKoUmJJ3Ly4nNKLel+ufA=="],
 
