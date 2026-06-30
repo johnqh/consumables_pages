@@ -28,7 +28,7 @@ export function CreditStorePage({
 }: CreditStorePageProps) {
   return (
     <div className={className}>
-      <h1 className='text-2xl font-bold mb-6 dark:text-white'>
+      <h1 className='text-2xl font-bold mb-6 text-foreground'>
         {labels.title}
       </h1>
 
@@ -95,11 +95,11 @@ export function CreditStorePage({
               className={`p-6 rounded-xl border shadow-sm hover:shadow-md transition-shadow ${colors.component.card.default.base} ${colors.component.card.default.dark}`}
             >
               <div className='text-center'>
-                <p className='text-3xl font-bold text-gray-900 dark:text-gray-100'>
+                <p className='text-3xl font-bold text-foreground'>
                   {formatters.formatCredits(pkg.credits)}
                 </p>
                 {formatters.getPackageDescription && (
-                  <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>
+                  <p className='text-sm text-muted-foreground mt-1'>
                     {formatters.getPackageDescription(pkg.packageId)}
                   </p>
                 )}

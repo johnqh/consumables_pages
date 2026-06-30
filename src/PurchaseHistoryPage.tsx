@@ -27,7 +27,7 @@ export function PurchaseHistoryPage({
 }: PurchaseHistoryPageProps) {
   return (
     <div className={className}>
-      <h1 className='text-2xl font-bold mb-6 dark:text-white'>
+      <h1 className='text-2xl font-bold mb-6 text-foreground'>
         {labels.title}
       </h1>
 
@@ -87,20 +87,20 @@ export function PurchaseHistoryPage({
                 {purchases.map(purchase => (
                   <tr
                     key={purchase.id}
-                    className={`border-b ${ui.border.subtle} hover:bg-gray-50 dark:hover:bg-gray-800/50`}
+                    className={`border-b ${ui.border.subtle} hover:bg-accent`}
                   >
-                    <td className='py-3 px-4 text-gray-700 dark:text-gray-300'>
+                    <td className='py-3 px-4 text-foreground'>
                       {formatters.formatDate(purchase.created_at)}
                     </td>
-                    <td className='py-3 px-4 text-right font-medium text-green-600 dark:text-green-400'>
+                    <td className='py-3 px-4 text-right font-medium text-success'>
                       +{purchase.credits}
                     </td>
-                    <td className='py-3 px-4 text-gray-600 dark:text-gray-400'>
+                    <td className='py-3 px-4 text-muted-foreground'>
                       {formatters.formatSource(
                         purchase.source as ConsumableSource
                       )}
                     </td>
-                    <td className='py-3 px-4 text-right text-gray-600 dark:text-gray-400'>
+                    <td className='py-3 px-4 text-right text-muted-foreground'>
                       {purchase.price_cents != null && purchase.currency
                         ? formatters.formatAmount(
                             purchase.price_cents,
@@ -123,21 +123,21 @@ export function PurchaseHistoryPage({
               >
                 <div className='flex justify-between items-start'>
                   <div>
-                    <p className='text-sm text-gray-500 dark:text-gray-400'>
+                    <p className='text-sm text-muted-foreground'>
                       {formatters.formatDate(purchase.created_at)}
                     </p>
-                    <p className='text-sm text-gray-600 dark:text-gray-400'>
+                    <p className='text-sm text-muted-foreground'>
                       {formatters.formatSource(
                         purchase.source as ConsumableSource
                       )}
                     </p>
                   </div>
                   <div className='text-right'>
-                    <p className='font-medium text-green-600 dark:text-green-400'>
+                    <p className='font-medium text-success'>
                       +{purchase.credits}
                     </p>
                     {purchase.price_cents != null && purchase.currency && (
-                      <p className='text-sm text-gray-500 dark:text-gray-400'>
+                      <p className='text-sm text-muted-foreground'>
                         {formatters.formatAmount(
                           purchase.price_cents,
                           purchase.currency

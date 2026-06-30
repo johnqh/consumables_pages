@@ -26,7 +26,7 @@ export function UsageHistoryPage({
 }: UsageHistoryPageProps) {
   return (
     <div className={className}>
-      <h1 className='text-2xl font-bold mb-6 dark:text-white'>
+      <h1 className='text-2xl font-bold mb-6 text-foreground'>
         {labels.title}
       </h1>
 
@@ -76,12 +76,12 @@ export function UsageHistoryPage({
                 {usages.map(usage => (
                   <tr
                     key={usage.id}
-                    className={`border-b ${ui.border.subtle} hover:bg-gray-50 dark:hover:bg-gray-800/50`}
+                    className={`border-b ${ui.border.subtle} hover:bg-accent`}
                   >
-                    <td className='py-3 px-4 text-gray-700 dark:text-gray-300'>
+                    <td className='py-3 px-4 text-foreground'>
                       {formatters.formatDate(usage.created_at)}
                     </td>
-                    <td className='py-3 px-4 text-gray-600 dark:text-gray-400'>
+                    <td className='py-3 px-4 text-muted-foreground'>
                       {usage.filename || '-'}
                     </td>
                   </tr>
@@ -97,10 +97,10 @@ export function UsageHistoryPage({
                 key={usage.id}
                 className={`p-4 rounded-lg border ${colors.component.card.default.base} ${colors.component.card.default.dark}`}
               >
-                <p className='text-sm text-gray-500 dark:text-gray-400'>
+                <p className='text-sm text-muted-foreground'>
                   {formatters.formatDate(usage.created_at)}
                 </p>
-                <p className='text-sm text-gray-700 dark:text-gray-300 font-medium'>
+                <p className='text-sm text-foreground font-medium'>
                   {usage.filename || '-'}
                 </p>
               </div>
