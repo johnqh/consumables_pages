@@ -9,7 +9,7 @@ import type { UsageHistoryPageProps } from './types.js';
 
 /**
  * Renders a paginated list of usage records.
- * Desktop: table with date and filename columns.
+ * Desktop: table with date, description and (optionally) credits columns.
  * Mobile: compact card layout.
  * @param props - See {@link UsageHistoryPageProps} for full prop documentation.
  */
@@ -24,6 +24,15 @@ export function UsageHistoryPage({
   className,
   emptyStateComponent,
 }: UsageHistoryPageProps) {
+  // Whichever the product sets. A file-based product fills `filename`; one that
+  // spends credits on something else fills `reference`.
+  const describe = (usage: (typeof usages)[number]) =>
+    usage.reference || usage.filename || '-';
+  // Absent means one, never zero: rows written before variable amounts existed
+  // spent exactly one credit.
+  const spent = (usage: (typeof usages)[number]) => usage.credits ?? 1;
+  const showCredits = labels.columnCredits !== undefined;
+
   return (
     <div className={className}>
       <h1 className='text-2xl font-bold mb-6 text-foreground'>
@@ -70,6 +79,13 @@ export function UsageHistoryPage({
                   >
                     {labels.columnFilename}
                   </th>
+                  {showCredits && (
+                    <th
+                      className={`text-right py-3 px-4 font-medium ${ui.text.muted}`}
+                    >
+                      {labels.columnCredits}
+                    </th>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -82,8 +98,13 @@ export function UsageHistoryPage({
                       {formatters.formatDate(usage.created_at)}
                     </td>
                     <td className='py-3 px-4 text-muted-foreground'>
-                      {usage.filename || '-'}
+                      {describe(usage)}
                     </td>
+                    {showCredits && (
+                      <td className='py-3 px-4 text-right text-foreground tabular-nums'>
+                        {spent(usage)}
+                      </td>
+                    )}
                   </tr>
                 ))}
               </tbody>
@@ -101,8 +122,13 @@ export function UsageHistoryPage({
                   {formatters.formatDate(usage.created_at)}
                 </p>
                 <p className='text-sm text-foreground font-medium'>
-                  {usage.filename || '-'}
+                  {describe(usage)}
                 </p>
+                {showCredits && (
+                  <p className='text-sm text-muted-foreground'>
+                    {labels.columnCredits}: {spent(usage)}
+                  </p>
+                )}
               </div>
             ))}
           </div>

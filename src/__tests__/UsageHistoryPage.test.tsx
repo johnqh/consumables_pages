@@ -133,3 +133,84 @@ describe('UsageHistoryPage', () => {
     expect(screen.queryByText('Load More')).toBeNull();
   });
 });
+
+describe('UsageHistoryPage: credits and reference', () => {
+  // A product whose unit of work is not a file spends several credits at a
+  // time on something it can describe. `filename` could express neither.
+
+  it('prefers a reference over a filename', () => {
+    render(
+      <UsageHistoryPage
+        usages={[
+          {
+            id: 1,
+            credits: 4,
+            reference: 'generate-track — 4 track-measures',
+            filename: null,
+            created_at: '2026-08-16',
+          },
+        ]}
+        isLoading={false}
+        error={null}
+        labels={defaultLabels}
+        formatters={defaultFormatters}
+      />
+    );
+    expect(
+      screen.getAllByText('generate-track — 4 track-measures').length
+    ).toBeGreaterThan(0);
+  });
+
+  it('still shows a filename when that is what the product sets', () => {
+    render(
+      <UsageHistoryPage
+        usages={usages}
+        isLoading={false}
+        error={null}
+        labels={defaultLabels}
+        formatters={defaultFormatters}
+      />
+    );
+    expect(screen.getAllByText('logo.svg').length).toBeGreaterThan(0);
+  });
+
+  it('shows a credits column only when its label is given', () => {
+    // Opt-in, so a consumer that spends exactly one credit per use — and has
+    // no column for it today — gains no empty column on upgrade.
+    const { rerender } = render(
+      <UsageHistoryPage
+        usages={[{ id: 1, credits: 4, reference: 'x', filename: null, created_at: 'd' }]}
+        isLoading={false}
+        error={null}
+        labels={defaultLabels}
+        formatters={defaultFormatters}
+      />
+    );
+    expect(screen.queryByText('Credits')).not.toBeInTheDocument();
+
+    rerender(
+      <UsageHistoryPage
+        usages={[{ id: 1, credits: 4, reference: 'x', filename: null, created_at: 'd' }]}
+        isLoading={false}
+        error={null}
+        labels={{ ...defaultLabels, columnCredits: 'Credits' }}
+        formatters={defaultFormatters}
+      />
+    );
+    expect(screen.getByText('Credits')).toBeInTheDocument();
+    expect(screen.getAllByText('4').length).toBeGreaterThan(0);
+  });
+
+  it('reads a missing credits count as one, never as free', () => {
+    render(
+      <UsageHistoryPage
+        usages={[{ id: 1, filename: 'logo.svg', created_at: 'd' }]}
+        isLoading={false}
+        error={null}
+        labels={{ ...defaultLabels, columnCredits: 'Credits' }}
+        formatters={defaultFormatters}
+      />
+    );
+    expect(screen.getAllByText('1').length).toBeGreaterThan(0);
+  });
+});

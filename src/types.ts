@@ -91,6 +91,13 @@ export interface UsageHistoryPageLabels {
   title: string;
   columnDate: string;
   columnFilename: string;
+  /**
+   * Header for the credits-spent column.
+   *
+   * Opt-in: the column is rendered only when this is set, so a product that
+   * spends exactly one credit per use gains no empty column on upgrade.
+   */
+  columnCredits?: string;
   noRecords: string;
   loadMore: string;
 }
