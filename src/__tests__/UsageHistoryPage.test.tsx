@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { UsageHistoryPage } from '../UsageHistoryPage';
-import type { UsageHistoryPageProps } from '../types';
+import { UsageHistoryPage } from '../UsageHistoryPage.js';
+import type { UsageHistoryPageProps } from '../types.js';
 
 const defaultLabels: UsageHistoryPageProps['labels'] = {
   title: 'Usage History',

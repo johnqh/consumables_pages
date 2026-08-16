@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { PurchaseHistoryPage } from '../PurchaseHistoryPage';
-import type { PurchaseHistoryPageProps } from '../types';
+import { PurchaseHistoryPage } from '../PurchaseHistoryPage.js';
+import type { PurchaseHistoryPageProps } from '../types.js';
 
 const defaultLabels: PurchaseHistoryPageProps['labels'] = {
   title: 'Purchase History',

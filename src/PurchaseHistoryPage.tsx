@@ -5,8 +5,8 @@
 
 import { colors, ui } from '@sudobility/design';
 import type { ConsumableSource } from '@sudobility/types';
-import { LoadingSpinner } from './LoadingSpinner';
-import type { PurchaseHistoryPageProps } from './types';
+import { LoadingSpinner } from './LoadingSpinner.js';
+import type { PurchaseHistoryPageProps } from './types.js';
 
 /**
  * Renders a paginated list of purchase records.

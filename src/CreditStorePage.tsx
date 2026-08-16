@@ -5,8 +5,8 @@
  */
 
 import { colors, ui } from '@sudobility/design';
-import { LoadingSpinner } from './LoadingSpinner';
-import type { CreditStorePageProps } from './types';
+import { LoadingSpinner } from './LoadingSpinner.js';
+import type { CreditStorePageProps } from './types.js';
 
 /**
  * Renders a credit store with balance display, purchase packages grid,
