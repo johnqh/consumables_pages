@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { CreditBalanceBadge } from '../CreditBalanceBadge.js';
+import { CreditBalanceBadge } from '../CreditBalanceBadge';
 
 describe('CreditBalanceBadge', () => {
   it('should show loading state', () => {

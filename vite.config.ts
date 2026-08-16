@@ -14,8 +14,11 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "ConsumablesPages",
-      formats: ["es", "umd"],
-      fileName: (format) => `index.${format === "es" ? "esm" : format}.js`,
+      // ES only, emitted as dist/index.js: that is what `main`, `types` and
+      // the exports map already point at, and what entity_pages produces. A
+      // UMD build has no consumer here and its globals map is dead weight.
+      formats: ["es"],
+      fileName: () => `index.js`,
     },
     rollupOptions: {
       external: [
@@ -26,13 +29,7 @@ export default defineConfig({
         "@sudobility/types",
       ],
       output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-          "react/jsx-runtime": "jsxRuntime",
-          "@sudobility/consumables_client": "SudobilityConsumablesClient",
-          "@sudobility/types": "SudobilityTypes",
-        },
+        exports: "named",
       },
     },
   },

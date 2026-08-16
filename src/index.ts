@@ -1,7 +1,7 @@
-export { CreditStorePage } from './CreditStorePage.js';
-export { PurchaseHistoryPage } from './PurchaseHistoryPage.js';
-export { UsageHistoryPage } from './UsageHistoryPage.js';
-export { CreditBalanceBadge } from './CreditBalanceBadge.js';
+export { CreditStorePage } from './CreditStorePage';
+export { PurchaseHistoryPage } from './PurchaseHistoryPage';
+export { UsageHistoryPage } from './UsageHistoryPage';
+export { CreditBalanceBadge } from './CreditBalanceBadge';
 
 export type {
   CreditStorePageProps,
@@ -14,6 +14,6 @@ export type {
   UsageHistoryPageLabels,
   UsageHistoryPageFormatters,
   CreditBalanceBadgeProps,
-} from './types.js';
+} from './types';
 
 export type { ConsumableSource } from '@sudobility/types';

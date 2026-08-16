@@ -4,8 +4,8 @@
  */
 
 import { colors, ui } from '@sudobility/design';
-import { LoadingSpinner } from './LoadingSpinner.js';
-import type { UsageHistoryPageProps } from './types.js';
+import { LoadingSpinner } from './LoadingSpinner';
+import type { UsageHistoryPageProps } from './types';
 
 /**
  * Renders a paginated list of usage records.

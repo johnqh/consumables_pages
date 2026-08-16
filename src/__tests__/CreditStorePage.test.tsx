@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { CreditStorePage } from '../CreditStorePage.js';
-import type { CreditStorePageProps } from '../types.js';
+import { CreditStorePage } from '../CreditStorePage';
+import type { CreditStorePageProps } from '../types';
 
 const defaultLabels: CreditStorePageProps['labels'] = {
   title: 'Credit Store',

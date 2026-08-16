@@ -5,7 +5,7 @@
  */
 
 import { colors, ui } from '@sudobility/design';
-import type { CreditBalanceBadgeProps } from './types.js';
+import type { CreditBalanceBadgeProps } from './types';
 
 /**
  * Renders a small inline badge showing the user's credit balance.
