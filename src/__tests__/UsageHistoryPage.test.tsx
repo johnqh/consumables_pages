@@ -179,7 +179,15 @@ describe('UsageHistoryPage: credits and reference', () => {
     // no column for it today — gains no empty column on upgrade.
     const { rerender } = render(
       <UsageHistoryPage
-        usages={[{ id: 1, credits: 4, reference: 'x', filename: null, created_at: 'd' }]}
+        usages={[
+          {
+            id: 1,
+            credits: 4,
+            reference: 'x',
+            filename: null,
+            created_at: 'd',
+          },
+        ]}
         isLoading={false}
         error={null}
         labels={defaultLabels}
@@ -190,7 +198,15 @@ describe('UsageHistoryPage: credits and reference', () => {
 
     rerender(
       <UsageHistoryPage
-        usages={[{ id: 1, credits: 4, reference: 'x', filename: null, created_at: 'd' }]}
+        usages={[
+          {
+            id: 1,
+            credits: 4,
+            reference: 'x',
+            filename: null,
+            created_at: 'd',
+          },
+        ]}
         isLoading={false}
         error={null}
         labels={{ ...defaultLabels, columnCredits: 'Credits' }}

@@ -10,33 +10,33 @@
  * `src/` rather than `dist/`, and a bundler-based consumer resolves the
  * directory anyway. Hence a test over the build output.
  */
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
-import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import { describe, expect, it } from 'vitest';
 
 // process.cwd() rather than import.meta.url: vitest resolves the latter
 // differently per environment, and a guard that silently skips guards nothing.
-const DIST = join(process.cwd(), "dist");
+const DIST = join(process.cwd(), 'dist');
 
 function jsFiles(dir: string): string[] {
   if (!existsSync(dir)) return [];
-  return readdirSync(dir).flatMap((entry) => {
+  return readdirSync(dir).flatMap(entry => {
     const full = join(dir, entry);
     if (statSync(full).isDirectory()) return jsFiles(full);
-    return full.endsWith(".js") ? [full] : [];
+    return full.endsWith('.js') ? [full] : [];
   });
 }
 
-describe.skipIf(!existsSync(DIST))("built output", () => {
-  it("gives every relative import a file extension", () => {
+describe.skipIf(!existsSync(DIST))('built output', () => {
+  it('gives every relative import a file extension', () => {
     const offenders: string[] = [];
 
     for (const file of jsFiles(DIST)) {
-      const source = readFileSync(file, "utf8");
+      const source = readFileSync(file, 'utf8');
       for (const match of source.matchAll(/from\s+"(\.[^"]*)"/g)) {
         const specifier = match[1];
-        if (!specifier.endsWith(".js")) {
-          offenders.push(`${file.replace(DIST, "dist")}: ${specifier}`);
+        if (!specifier.endsWith('.js')) {
+          offenders.push(`${file.replace(DIST, 'dist')}: ${specifier}`);
         }
       }
     }
