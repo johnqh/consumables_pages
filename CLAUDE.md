@@ -1,5 +1,10 @@
 # Consumables Pages
 
+> **Git policy — never auto-commit or auto-push.** Leave your work in the working tree.
+> Run `git commit`, `git push`, `gh pr create`, or `scripts/push_all.sh` **only when the user
+> explicitly asks in that turn**. Approval for an earlier change does not carry forward, and
+> finishing a task is not permission to commit it.
+
 Web-only UI components for consumable credits system.
 
 **npm**: `@sudobility/consumables_pages` (public)
@@ -153,3 +158,7 @@ module.exports = {
 - Build before publish: `bun run build` produces ESM output in `dist/`
 - Bump version in `package.json`, then `npm publish --access public`
 - Ensure `consumables_client` peer dependency version range is correct in `package.json` before publishing
+
+## Git Workflow
+
+- Do not use feature branches for code changes. Always stay on the current branch.
