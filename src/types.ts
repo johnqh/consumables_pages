@@ -49,6 +49,29 @@ export interface CreditStorePageProps {
   className?: string;
 }
 
+// === CreditPaywallDialog ===
+
+/** Localizable label strings for the CreditPaywallDialog component. */
+export interface CreditPaywallDialogLabels extends CreditStorePageLabels {
+  /** The dialog's heading: why it appeared, not what it contains. */
+  paywallTitle: string;
+  /** A sentence under the heading, explaining what was refused. */
+  paywallMessage?: string;
+  /** Accessible name for the close control. */
+  closeLabel: string;
+}
+
+/** Props for the CreditPaywallDialog component. */
+export interface CreditPaywallDialogProps extends Omit<
+  CreditStorePageProps,
+  'labels' | 'className'
+> {
+  isOpen: boolean;
+  onClose: () => void;
+  labels: CreditPaywallDialogLabels;
+  className?: string;
+}
+
 // === PurchaseHistoryPage ===
 
 /** Localizable label strings for the PurchaseHistoryPage component. */

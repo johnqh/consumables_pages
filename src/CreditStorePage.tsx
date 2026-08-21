@@ -28,9 +28,17 @@ export function CreditStorePage({
 }: CreditStorePageProps) {
   return (
     <div className={className}>
-      <h1 className='text-2xl font-bold mb-6 text-foreground'>
-        {labels.title}
-      </h1>
+      {/*
+        Omitted when the title is empty, so a host that has already given the
+        store a heading of its own -- CreditPaywallDialog, whose heading says
+        why it opened -- does not print a second one. An empty <h1> would
+        still take its margin.
+      */}
+      {labels.title !== '' && (
+        <h1 className='text-2xl font-bold mb-6 text-foreground'>
+          {labels.title}
+        </h1>
+      )}
 
       {/* Balance display */}
       {isAuthenticated && balance !== null && (
