@@ -106,6 +106,11 @@ export function CreditStorePage({
                 <p className='text-3xl font-bold text-foreground'>
                   {formatters.formatCredits(pkg.credits)}
                 </p>
+                {pkg.description && (
+                  <p className='text-sm text-muted-foreground mt-1'>
+                    {pkg.description}
+                  </p>
+                )}
                 {formatters.getPackageDescription && (
                   <p className='text-sm text-muted-foreground mt-1'>
                     {formatters.getPackageDescription(pkg.packageId)}

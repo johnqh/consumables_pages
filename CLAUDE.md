@@ -28,7 +28,8 @@ src/
 ├── index.ts                   # Barrel exports (components + types)
 ├── types.ts                   # All prop/label/formatter interfaces
 ├── LoadingSpinner.tsx         # Shared internal loading spinner with ARIA attributes
-├── CreditStorePage.tsx        # Balance display + grid of credit packages with buy buttons
+├── CreditStorePage.tsx        # Presentational balance + package grid
+├── RevenueCatCreditStore.tsx  # Connected catalog, balance, and purchase flow
 ├── PurchaseHistoryPage.tsx    # Responsive table/cards of purchase records
 ├── UsageHistoryPage.tsx       # Responsive table/cards of usage records
 ├── CreditBalanceBadge.tsx     # Small inline badge for topbar integration
@@ -63,6 +64,11 @@ bun run format       # Prettier format
 - Responsive grid of credit packages (1 col -> 2 col sm -> 3 col lg)
 - Buy buttons with purchasing state
 - Props: `CreditStorePageProps` (isAuthenticated, balance, packages, labels, formatters, callbacks)
+
+### RevenueCatCreditStore
+- Connected alternative for apps that initialize `consumables_client`.
+- Loads localized packages and starts purchases through RevenueCat's platform SDK; the backend catalog supplies the allowed products and authoritative credit amount.
+- Props: offering ID, authentication state, login callback, labels, and formatters.
 
 ### PurchaseHistoryPage
 - Desktop: `<table>` with columns (date, credits, source, amount)
@@ -147,9 +153,9 @@ module.exports = {
 ## Gotchas
 
 - **Consumer app must provide Tailwind CSS**: This package emits Tailwind class names but does NOT bundle Tailwind itself. If the consuming app does not have Tailwind configured, components will render unstyled. This is by design. See the "Tailwind CSS Setup" section above for required content path configuration.
-- **Components are purely presentational**: No hooks are called inside components. The parent app is responsible for calling `useBalance()`, `usePurchaseCredits()`, etc. from `consumables_client` and passing the results as props. Breaking this pattern creates tight coupling.
+- **CreditStorePage remains presentational**: `RevenueCatCreditStore` is the opt-in connected wrapper; it owns the consumables hooks and passes results to the same page component.
 - **No internal state**: Components derive everything from props. If you need loading states or error states, they must be passed in as props, not managed internally with `useState`.
-- **Peer dependency on consumables_client**: The package depends on `consumables_client` for TypeScript types (e.g., `CreditPackage`, `CreditBalance`), but it never imports runtime code from it. The peer dependency ensures type compatibility.
+- **Peer dependency on consumables_client**: `RevenueCatCreditStore` uses its hooks at runtime; consuming apps must initialize the client singleton before rendering the connected store.
 - **`tsconfig.json` has `noEmit: true`**: The main tsconfig is for checking only. Building requires `tsconfig.build.json` (via `bun run build`).
 
 ## Publishing

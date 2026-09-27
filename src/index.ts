@@ -1,4 +1,5 @@
 export { CreditStorePage } from './CreditStorePage';
+export { RevenueCatCreditStore } from './RevenueCatCreditStore';
 export { CreditPaywallDialog } from './CreditPaywallDialog';
 export { PurchaseHistoryPage } from './PurchaseHistoryPage';
 export { UsageHistoryPage } from './UsageHistoryPage';
@@ -18,5 +19,7 @@ export type {
   UsageHistoryPageFormatters,
   CreditBalanceBadgeProps,
 } from './types';
+
+export type { RevenueCatCreditStoreProps } from './RevenueCatCreditStore';
 
 export type { ConsumableSource } from '@sudobility/types';
