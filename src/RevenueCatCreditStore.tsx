@@ -47,7 +47,13 @@ export function RevenueCatCreditStore({
         null
       }
       onPurchase={async packageId => {
-        await purchase.purchase(packageId, offeringId);
+        const selected = products.packages.find(
+          pkg => pkg.packageId === packageId
+        );
+        await purchase.purchase(
+          selected?.storePackageId ?? packageId,
+          selected?.offeringId ?? offeringId
+        );
       }}
       onLoginClick={onLoginClick}
       labels={labels}
