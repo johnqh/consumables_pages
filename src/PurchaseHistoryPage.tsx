@@ -4,6 +4,7 @@
  */
 
 import { colors, ui } from '@sudobility/design';
+import { quietButtonClass } from './controls';
 import type { ConsumableSource } from '@sudobility/types';
 import { LoadingSpinner } from './LoadingSpinner';
 import type { PurchaseHistoryPageProps } from './types';
@@ -152,10 +153,7 @@ export function PurchaseHistoryPage({
 
           {hasMore && onLoadMore && (
             <div className='mt-4 text-center'>
-              <button
-                onClick={onLoadMore}
-                className={`px-4 py-2 text-sm font-medium ${ui.text.link}`}
-              >
+              <button onClick={onLoadMore} className={quietButtonClass()}>
                 {labels.loadMore}
               </button>
             </div>

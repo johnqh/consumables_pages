@@ -10,6 +10,7 @@ import type {
 } from './types';
 import { PurchaseHistoryPage } from './PurchaseHistoryPage';
 import { UsageHistoryPage } from './UsageHistoryPage';
+import { primaryButtonClass } from './controls';
 
 export interface CreditHistoryPageProps {
   purchaseLabels: PurchaseHistoryPageLabels;
@@ -44,7 +45,7 @@ export function CreditHistoryPage({
         <div className='flex justify-end'>
           <button
             type='button'
-            className='rounded-md bg-theme-primary px-4 py-2 font-medium text-white'
+            className={primaryButtonClass()}
             onClick={onPurchaseCredits}
           >
             {purchaseButtonLabel ?? 'Purchase credits'}

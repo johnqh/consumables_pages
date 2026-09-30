@@ -6,6 +6,7 @@
 
 import { colors, ui } from '@sudobility/design';
 import { LoadingSpinner } from './LoadingSpinner';
+import { primaryButtonClass, primaryButtonFullWidthClass } from './controls';
 import type { CreditStorePageProps } from './types';
 
 /**
@@ -77,7 +78,7 @@ export function CreditStorePage({
           <p className='text-sm'>{labels.loginRequired}</p>
           <button
             onClick={onLoginClick}
-            className={`mt-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${colors.component.button.primary.base} ${colors.component.button.primary.dark}`}
+            className={`mt-2 ${primaryButtonClass()}`}
           >
             {labels.loginButton ?? 'Log in'}
           </button>
@@ -124,7 +125,7 @@ export function CreditStorePage({
                 <button
                   onClick={() => onPurchase(pkg.packageId)}
                   disabled={isPurchasing || !isAuthenticated}
-                  className={`mt-4 w-full px-4 py-2.5 font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 ${colors.component.button.primary.base} ${colors.component.button.primary.dark}`}
+                  className={`mt-4 ${primaryButtonFullWidthClass()}`}
                 >
                   {isPurchasing
                     ? labels.purchasingButton

@@ -26,6 +26,10 @@ export default defineConfig({
         "react-dom",
         "react/jsx-runtime",
         "@sudobility/consumables_client",
+        // The host configures the design system's theme. A bundled copy is a
+        // second module instance nobody configured, which answers with the
+        // un-themed palette: that is how a blue button reached a red app.
+        "@sudobility/design",
         "@sudobility/types",
       ],
       output: {

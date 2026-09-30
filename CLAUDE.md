@@ -93,6 +93,7 @@ bun run format       # Prettier format
 
 ### Peer Dependencies
 - `@sudobility/consumables_client` ^0.0.6 -- TypeScript types only (CreditPackage)
+- `@sudobility/design` ^1.1.56 -- theme-aware classes; external to the build, so the host's configured copy is the one used
 - `@sudobility/types` ^1.9.53 -- shared types (ConsumablePurchaseRecord, ConsumableUsageRecord)
 - `react` ^18.0.0 || ^19.0.0
 - `react-dom` ^18.0.0 || ^19.0.0
@@ -153,6 +154,9 @@ module.exports = {
 ## Gotchas
 
 - **Consumer app must provide Tailwind CSS**: This package emits Tailwind class names but does NOT bundle Tailwind itself. If the consuming app does not have Tailwind configured, components will render unstyled. This is by design. See the "Tailwind CSS Setup" section above for required content path configuration.
+- **`@sudobility/design` is a peer and a build external, never bundled.** The host calls `configureTheme()` on its own copy; a copy bundled into `dist/index.js` is a second module instance that nobody configured, so it answers with the un-themed palette. That shipped: a blue Buy button in an app whose primary is red, with every test passing, because the tests run un-themed too.
+- **No palette colours, and every control's classes come from `src/controls.ts`.** `primaryButtonClass()`, `quietButtonClass()` and `inputClass()` read `variants.*` from the design system, as functions called while rendering (a constant computed at import can be computed before the host configures its theme). A button written as palette classes is one the theme cannot reach and one the host's Tailwind may not generate a rule for — the Redeem button was white text on no background. `FIELD_HEIGHT_CLASS` gives a field and the button beside it one height. `src/__tests__/design-system.test.ts` enforces all of this with an empty allow list.
+- **The coupon pages' copy is English and hardcoded** (`CreditCouponPages.tsx`), unlike the store and history pages, which take `labels`. A host in another language shows English there until they take labels too.
 - **CreditStorePage remains presentational**: `RevenueCatCreditStore` is the opt-in connected wrapper; it owns the consumables hooks and passes results to the same page component.
 - **No internal state**: Components derive everything from props. If you need loading states or error states, they must be passed in as props, not managed internally with `useState`.
 - **Peer dependency on consumables_client**: `RevenueCatCreditStore` uses its hooks at runtime; consuming apps must initialize the client singleton before rendering the connected store.
